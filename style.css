@@ -2,9 +2,15 @@
 .container{
     position: relative;
     padding: 0;
+    margin: 0;
     width: 100vw;
     min-height: 100dvh;
     overflow: hidden;
+}
+
+body {
+    padding: 0;
+    margin: 0;
 }
 
 .page{
@@ -27,50 +33,48 @@
     max-width: 40ch;
     opacity: 0;
     will-change: transform;
+    animation-play-state: paused;
+}
+
+.page .btn{
+    opacity: 0;
+    pointer-events: none;
 }
 
 .page.active{
     opacity: 1;
     pointer-events: auto;
+    animation-play-state: running;
 }
 
 .page.active p{
-    animation: fade-in-left 3s ease-out forwards;
+    animation: fade-in 3s ease-out forwards;
 }
 
 .page.active h1{
-    animation: write-in 6s ease-out forwards;
+    animation: write-in 6s  ease-out forwards;
 }
 
-.page.active p:nth-child(2){animation-delay: 3s;}
-.page.active p:nth-child(3){animation-delay: 6s;}
-.page.active p:nth-child(4){animation-delay: 9s;}
-.page.active p:nth-child(5){animation-delay: 12s;}
-.page.active p:nth-child(6){animation-delay: 15s;}
+.page.active p:nth-child(2){animation-delay: 2.5s;}
+.page.active p:nth-child(3){animation-delay: 5.5s;}
+.page.active p:nth-child(4){animation-delay: 8.5s;}
+.page.active p:nth-child(5){animation-delay: 11.5s;}
+.page.active p:nth-child(6){animation-delay: 14.5s;}
 
-.flower{
-    position: absolute;
-    opacity: 0.8;
-    will-change: transform;
+.page.active .btn{
+    animation: fade-in 1s ease-out forwards;
+    animation-delay: 17s;
+    pointer-events: auto;
 }
 
-@media (max-width:600px) {
-    .flower{
-        width: 120px;
-    }
-}
-
-@media (min-width:600px) {
-    .flower{
-        width: 250px;
-    }
+#page-0.active .btn{
+    animation-delay: 2.5s;
 }
 
 h1{
     font-family: "Italianno", cursive;
     overflow: hidden;
     white-space: nowrap;
-    width: 0;
     will-change: transform;
 }
 
@@ -98,6 +102,26 @@ a:active{
     box-shadow: 0px -1px 5px purple;
 }
 
+/*__-Extras-__*/
+.flower{
+    position: absolute;
+    opacity: 0.8;
+    will-change: transform;
+    animation-play-state: paused;
+}
+
+@media (max-width:600px) {
+    .flower{
+        width: 120px;
+    }
+}
+
+@media (min-width:600px) {
+    .flower{
+        width: 250px;
+    }
+}
+
 /*___PAGES___*/
 /*---Page 0---*/
 #page-0{
@@ -105,15 +129,21 @@ a:active{
 }
 
 #lilac-1{
-    top: 20px;
-    left: 30px;
+    top: 1dvh;
+    left: 1vw;
+}
+
+.page.active #lilac-1{
     animation: sway 6s ease-in-out infinite;
     transform-origin: top left;
 }
 
 #lav-1{
-    bottom: 20px;
-    right: 30px;
+    bottom: 0dvh;
+    right: 1vw;
+}
+
+.page.active #lilac-1{
     animation: sway 6s ease-in-out infinite;
     transform-origin: bottom center;
 }
@@ -124,10 +154,49 @@ a:active{
 
 }
 
+#lav-2{
+    bottom: -1dvh;
+    left: 2vw;  
+}
+
+.page.active #lav-2{
+    animation: sway-left 6s ease-in-out infinite;
+    transform-origin: bottom center;
+}
+
+#lav-3{
+    bottom: -1dvh;
+    right: 2vw;
+}
+
+.page.active #lav-3{
+    animation: sway 6s ease-in-out infinite;
+    transform-origin: bottom center;
+}
 /*---Page 2---*/
 #page-2{
     background-color: #8B8CFB;
 
+}
+
+#lilac-2{
+    top: -25dvh;
+    right: 0vw;
+}
+
+.page.active #lilac-2{
+    animation: sway-up 6s ease-in-out infinite;
+    transform-origin: bottom center;
+}
+
+#lilac-3{
+    bottom: -1dvh;
+    left: 0vw;
+}
+
+.page.active #lilac-3{
+    animation: sway 6s ease-in-out infinite;
+    transform-origin: left center;
 }
 
 
@@ -137,16 +206,66 @@ a:active{
 
 }
 
+#bouquet-1{
+    z-index: 0;
+    opacity: 0.1;
+}
+
 /*---Page 4---*/
 #page-4{
     background: linear-gradient( #F28482, #FF6B6B);
 
 }
+#bouquet-2{
+    top: 10dvh;
+    rotate: 35deg;
+    z-index: 0;
+
+    -webkit-mask-image: linear-gradient(-45deg, transparent 35%, black 40%);
+    mask-image: linear-gradient(-45deg, transparent 35%, black 40%);
+}
+
+.page.active #bouquet-2{
+    animation: fade-in-img 3s ease-out;
+    transform: translate(-8vw, -8dvh);
+    transition: transform 3s;
+}
+
+#bouquet-3{
+    left: 8vw;
+    rotate: -45deg;
+    z-index: 0;
+
+    -webkit-mask-image: linear-gradient(40deg, transparent 40%, black 70%);
+    mask-image: linear-gradient(40deg, transparent 40%, black 70%);
+}
+
+.page.active #bouquet-3{
+    animation: fade-in-img-mirror 3s ease-out forwards;
+    transition: transform 3s;
+}
+
+#bouquet-4{
+    right: 8vw;
+    rotate: 45deg;
+    z-index: 0;
+
+    -webkit-mask-image: linear-gradient(40deg, transparent 40%, black 70%);
+    mask-image: linear-gradient(40deg, transparent 40%, black 70%);
+}
+
+.page.active #bouquet-4{
+    animation: fade-in-img 3s ease-out;
+    transform: translate(8vw, -8dvh);
+    transition: transform 3s;
+}
 
 /*---Page 5---*/
-#page-5{
-    background: linear-gradient( #D62828, #C1121F);
-}
+#page-5{background: linear-gradient( #D62828, #C1121F);}
+
+#rose-1{top:100dvh;}
+
+.page.active #rose-1{animation: fadeUp 3s ease-out forwards;}
 
 /*___ANIMATIONS___*/
 @keyframes sway {
@@ -155,12 +274,39 @@ a:active{
     100%{transform: rotate(-2deg) translateY(0);}
 }
 
-@keyframes fade-in-left {
-    0% {transform: translateX(-50vw);}
-    100%{transform: translateX(0vw); opacity: 1;}
+@keyframes sway-left {
+    0% {transform: rotate(-2deg) translateY(0) scaleX(-1);}
+    50%{transform: rotate(2deg) translateY(-5px) scaleX(-1);}
+    100%{transform: rotate(-2deg) translateY(0) scaleX(-1);}
+}
+
+@keyframes sway-up {
+    0% {transform: rotate(-2deg) translateY(0) scaleY(-1) scaleX(-1);}
+    50%{transform: rotate(2deg) translateY(-5px) scaleY(-1) scaleX(-1);}
+    100%{transform: rotate(-2deg) translateY(0) scaleY(-1) scaleX(-1);}
+}
+
+@keyframes fade-in {
+    0% {opacity: 0;}
+    100%{ opacity: 1;}
+}
+
+@keyframes fade-in-img {
+    0% {opacity: 0;}
+    100%{ opacity: 0.8;}
+}
+
+@keyframes fade-in-img-mirror {
+    0% {opacity: 0; transform: scaleX(-1);}
+    100% { opacity: 0.8; transform: translate(-8vw, -8dvh) scaleX(-1);}
 }
 
 @keyframes write-in {
-    to{width: 100%;}
+    0% {width: 0;}
+    100% {width: 100%;}
 }
 
+@keyframes fadeUp {
+    0% {opacity: 0; transform: translateY(50dvh) scale(1,1);}
+    100% {opacity: 1; transform: translateY(0) scale(3,3);}
+}

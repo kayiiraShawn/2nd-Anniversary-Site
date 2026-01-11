@@ -184,6 +184,14 @@ a:active{
     right: 0vw;
 }
 
+@media (max-width:600px) {
+    #lilac-2{
+        top: auto;
+        bottom: 85%;
+        right: 0vw;
+}
+}
+
 .page.active #lilac-2{
     animation: sway-up 6s ease-in-out infinite;
     transform-origin: bottom center;

@@ -187,7 +187,7 @@ a:active{
 @media (max-width:600px) {
     #lilac-2{
         top: auto;
-        bottom: 85%;
+        bottom: 100%;
         right: 0vw;
 }
 }
